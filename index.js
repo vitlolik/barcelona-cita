@@ -6,6 +6,8 @@ const main = async () => {
 
     const browser = await chromium.launch({ headless: false, slowMo: 500 });
     const page = await browser.newPage();
+    page.on('dialog', dialog => dialog.accept());
+
     await page.goto('https://icp.administracionelectronica.gob.es/icpplustieb/index.html');
 
     await page.selectOption('#divProvincias #form', '/icpplustieb/citar?p=8&locale=es');
